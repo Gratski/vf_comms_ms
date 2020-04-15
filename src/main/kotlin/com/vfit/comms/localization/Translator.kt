@@ -22,8 +22,10 @@ class Translator(
             return messageSource!!.getMessage(msgCode, null, locale)
         }
 
-        fun toLocale(msgCode: String, args: Array<String>): String {
-            val locale = LocaleContextHolder.getLocale()
+        fun toLocale(msgCode: String, languageTag: String? = null, args: Array<String>): String {
+            var locale = localizationService!!.getLocale(languageTag)
+            if(locale.toLanguageTag() == null)
+                locale = Locale.ENGLISH
             return messageSource!!.getMessage(msgCode, args, locale)
         }
     }

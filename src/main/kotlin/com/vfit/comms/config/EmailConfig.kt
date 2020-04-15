@@ -1,4 +1,4 @@
-package com.vfit.comms.email
+package com.vfit.comms.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
