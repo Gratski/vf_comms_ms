@@ -49,12 +49,12 @@ class AMQPConfig {
         factory.setConcurrentConsumers(2)
 
         factory.setMaxConcurrentConsumers(10)
-        factory.setMessageConverter(listnerMessageConverter())
+        factory.setMessageConverter(listenerMessageConverter())
         return factory
     }
 
     @Bean
-    fun listnerMessageConverter(): Jackson2JsonMessageConverter {
+    fun listenerMessageConverter(): Jackson2JsonMessageConverter {
         val converter = Jackson2JsonMessageConverter()
 
         val classMapper = DefaultClassMapper()

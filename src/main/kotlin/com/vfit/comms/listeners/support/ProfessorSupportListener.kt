@@ -1,17 +1,17 @@
-package com.vfit.comms.listeners
+package com.vfit.comms.listeners.support
 
-import com.vfit.comms.services.EmailService
+import com.vfit.comms.services.ProfessorEmailService
 import org.springframework.amqp.rabbit.annotation.RabbitHandler
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.stereotype.Controller
 
 /**
- * Controller that handles messages from Students Support Queue
+ * Controller that handles messages from Professors Support Queue
  */
 @Controller
-@RabbitListener(queues = ["\${queue.support.students}"], containerFactory = "inputListenerContainerFactory")
-class StudentSupportListener(
-        val emailService: EmailService
+@RabbitListener(queues = ["\${queue.support.professors}"], containerFactory = "inputListenerContainerFactory")
+class ProfessorSupportListener(
+        val emailService: ProfessorEmailService
 ) {
 
     @RabbitHandler
@@ -20,7 +20,7 @@ class StudentSupportListener(
         val languageTag = fileBody["languageTag"] as String
         val username = fileBody["username"] as String
         val ticketID = fileBody["ticketId"] as String
-        emailService.sendStudentSupportEmail(to, languageTag, username, ticketID)
+        emailService.sendProfessorSupportEmail(to, languageTag, username, ticketID)
     }
 
 }
