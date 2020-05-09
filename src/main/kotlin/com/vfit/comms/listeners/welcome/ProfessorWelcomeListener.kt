@@ -17,7 +17,8 @@ class ProfessorWelcomeListener(val emailService: ProfessorEmailService) {
         val to = fileBody["to"] as String
         val languageTag = fileBody["languageTag"] as String
         val username = fileBody["username"] as String
-        emailService.sendProfessorWelcomeEmail(to, languageTag, username)
+        val accessCode = fileBody["accessCode"] as String
+        emailService.sendProfessorWelcomeEmail(to, languageTag, username, accessCode)
     }
 
 }

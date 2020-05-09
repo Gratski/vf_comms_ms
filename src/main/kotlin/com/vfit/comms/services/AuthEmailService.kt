@@ -11,7 +11,7 @@ class AuthEmailService(mailSender: JavaMailSender): AbstractEmailService(mailSen
 
     fun sendPasswordRecoveryEmail(to: String, username: String, token: String, languageTag: String) {
         val subject = Translator.toLocale(MessageCodes.AUTH_PASSWORD_RECOVERY_SUBJECT, languageTag)
-        val body = String.format(Translator.toLocale(MessageCodes.AUTH_PASSWORD_RECOVERY_BODY, languageTag), username, username)
+        val body = String.format(Translator.toLocale(MessageCodes.AUTH_PASSWORD_RECOVERY_BODY, languageTag), token)
         val msg = baseMessageBuilder(subject, to, noReplyEmail, body)
         try {
             mailSender.send(msg)

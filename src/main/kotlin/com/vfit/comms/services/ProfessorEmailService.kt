@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service
 @Service
 class ProfessorEmailService(mailSender: JavaMailSender): AbstractEmailService(mailSender) {
 
-    fun sendProfessorWelcomeEmail(to: String, languageTag: String, username: String) {
+    fun sendProfessorWelcomeEmail(to: String, languageTag: String, username: String, accessCode: String) {
         val subject = Translator.toLocale(MessageCodes.WELCOME_PROFESSOR_EMAIL_SUBJECT, languageTag)
-        val body = String.format(Translator.toLocale(MessageCodes.WELCOME_PROFESSOR_EMAIL_BODY, languageTag), username, username)
+        val body = String.format(Translator.toLocale(MessageCodes.WELCOME_PROFESSOR_EMAIL_BODY, languageTag), accessCode)
         val msg = baseMessageBuilder(subject, to, noReplyEmail, body)
         try {
             mailSender.send(msg)
