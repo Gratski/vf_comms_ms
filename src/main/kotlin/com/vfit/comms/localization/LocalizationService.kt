@@ -8,7 +8,9 @@ class LocalizationService {
 
     val LOCALES: List<Locale> = listOf(
             Locale("en"),
-            Locale("pt")
+            Locale("pt"),
+            Locale("es"),
+            Locale("fr")
     )
 
     /**
